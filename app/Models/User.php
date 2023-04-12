@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'state_id'
     ];
 
     /**
@@ -44,11 +45,11 @@ class User extends Authenticatable
 
     public function state()
     {
-        $this->belongsTo(State::class);
+        return $this->belongsTo(State::class);
     }
 
     public function advertises()
     {
-        $this->hasMany(Advertise::class);
+        return $this->hasMany(Advertise::class);
     }
 }

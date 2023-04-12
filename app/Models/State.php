@@ -9,7 +9,7 @@ class State extends Model
 {
     use HasFactory;
 
-    protected $fillabe = [
+    protected $fillable = [
         'name',
         'slug'
     ];
@@ -18,11 +18,11 @@ class State extends Model
 
     public function advertises()
     {
-        $this->hasMany(Advertise::class);
+        return $this->hasMany(Advertise::class);
     }
 
     public function users()
     {
-        $this->hasMany(User::class);
+        return $this->hasMany(User::class);
     }
 }
