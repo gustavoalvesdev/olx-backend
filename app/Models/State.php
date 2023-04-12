@@ -15,4 +15,14 @@ class State extends Model
     ];
 
     public $timestamps = false;
+
+    public function advertises()
+    {
+        $this->hasMany(Advertise::class);
+    }
+
+    public function users()
+    {
+        $this->hasMany(User::class);
+    }
 }
