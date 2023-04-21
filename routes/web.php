@@ -1,10 +1,16 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+Route::get('/ping', function(): JsonResponse {
+    return response()->json(['Pong' => true]);
+});
 
 /**
  * Rota de Utilidade
- * [ ] - /ping - Responde com Pong
+ * [x] - /ping - Responde com Pong
  * 
  *  - Rotas de Autenticação * Autenticação via TOKEN
  * [ ] - /user/signin -- Login
