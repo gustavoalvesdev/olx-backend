@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\StatesController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -11,6 +13,10 @@ Route::get('/ping', function(): JsonResponse {
 
 Route::get('/states', [StatesController::class, 'index']);
 Route::get('/categories', [CategoriesController::class, 'index']);
+
+Route::post('user/signup', [UserController::class, 'signup']);
+Route::post('user/signin', [UserController::class, 'signin']);
+Route::post('user/me', [UserController::class, 'me']);
 
 /**
  * Rota de Utilidade
@@ -24,6 +30,7 @@ Route::get('/categories', [CategoriesController::class, 'index']);
  * - Rotas de configuração geral
  * [x] - /states - Listar os estados
  * [x] - /categories - Listar as categorias do sistema
+ * [x] - Criar as seeders para os estados e categorias.
  *
  * - Rotas de Advertises
  * [ ] - /ad/list - Listar todos os anúncios
