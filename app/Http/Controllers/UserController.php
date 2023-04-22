@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class UserController extends Controller
         return response()->json(['method' => 'signin']);
     }
 
-    public function signup(): JsonResponse
+    public function signup(CreateUserRequest $request): JsonResponse
     {
         return response()->json(['method' =>'signup']);
     }
