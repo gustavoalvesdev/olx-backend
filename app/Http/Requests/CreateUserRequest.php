@@ -21,8 +21,7 @@ class CreateUserRequest extends FormRequest
     protected function failedValidation(Validator $validator): void
     {
         throw new HttpResponseException(response()->json([
-            'errors' => $validator->errors(),
-            'status' => 'error'
+            'error' => array_values($validator->errors()->getMessages())[0][0],
         ]));
     }
 }

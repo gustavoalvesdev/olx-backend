@@ -27,6 +27,19 @@ Route::post('user/me', [UserController::class, 'me']);
  * [ ] - /user/signup -- Registro do usuário
  * [ ] - /user/me --- Informações do usuário logado
  *
+ *
+ * Mensagens de erro devem conter:
+ * error: Mensagem descritiva do erro, exemplo:
+ * {
+ *  error:'Usuário inválido'
+ * }
+ *
+ * Sucesso:
+ * Deve conter campo 'error' com valor nulo ou vazio, exemplo:
+ * {
+ *  error:''
+ * }
+ *
  * - Rotas de configuração geral
  * [x] - /states - Listar os estados
  * [x] - /categories - Listar as categorias do sistema
