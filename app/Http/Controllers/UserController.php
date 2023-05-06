@@ -3,16 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\SignInRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function signin(): JsonResponse
+    public function signin(SignInRequest $request): JsonResponse
     {
-        return response()->json(['method' => 'signin']);
+        $data = $request->only(['email', 'password']);
+
+        if (Auth::attempt($data)) {
+            $user = Auth::user();
+            $response = [
+                'error' => '',
+                'token' => $user->createToken('login_token')->plainTextToken
+            ];
+            return response()->json($response);
+        }
+        return response()->json(['error' => 'Usuário e/ou Senha inválido(s)!']);
     }
 
     public function signup(CreateUserRequest $request): JsonResponse
