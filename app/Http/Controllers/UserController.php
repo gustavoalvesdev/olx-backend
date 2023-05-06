@@ -44,6 +44,23 @@ class UserController extends Controller
 
     public function me(): JsonResponse
     {
-        return response()->json(['method' =>'me']);
+
+        $user = Auth::user();
+
+        $response = [
+            'name' => $user->name,
+            'email' => $user->email,
+            'state' => $user->state->name,
+            'ads' => $user->advertises
+        ];
+
+        /**
+         * {name,
+         * email,
+         * state: nome do estado,
+         * ads: [ad]
+         * }
+         */
+        return response()->json($response);
     }
 }
